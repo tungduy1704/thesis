@@ -1,0 +1,8 @@
+&inputpp 
+   outdir      = './out/', 
+   prefix      = 'mos2'
+   seedname    = 'mos2'   
+   write_mmn   = .true.
+   write_amn   = .true.
+   write_unk   = .false.      
+/
