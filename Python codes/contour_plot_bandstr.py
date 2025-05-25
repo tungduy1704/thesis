@@ -8,13 +8,12 @@ def plot_valence_conduction_separate_colorbars(
     cond_idx=7,
     nk=100
 ):
-    # === Đọc dữ liệu eigenvalues
+    # Read data from CSV file
     df = pd.read_csv(eigen_csv)
 
     kx = df["kx"].values
     ky = df["ky"].values
 
-    # === Scale kx, ky về đúng đơn vị
     a_lat = 3.190315
     kx = kx * (2 * np.pi / a_lat)
     ky = ky * (2 * np.pi / a_lat)
@@ -23,7 +22,7 @@ def plot_valence_conduction_separate_colorbars(
     num_bands = len(band_cols)
 
     #if val_idx >= num_bands or cond_idx >= num_bands:
-    #    raise ValueError(f"val_idx hoặc cond_idx vượt quá số bands trong file ({num_bands} bands).")
+    #    raise ValueError(f"val_idx or cond_idx exceeds the number of bands: ({num_bands} bands).")
 
     valence_band = df[f"band_{val_idx+1}"].values
     conduction_band = df[f"band_{cond_idx+1}"].values
@@ -56,7 +55,7 @@ def plot_valence_conduction_separate_colorbars(
     plt.show()
 
 
-# === Ví dụ gọi hàm
+# Call the function with the specified parameters
 plot_valence_conduction_separate_colorbars(
      eigen_csv="eigenvalues_map294.csv",
      val_idx=6,
