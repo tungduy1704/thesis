@@ -21,9 +21,9 @@ def read_kx_ky_val(filename, column_index):
     return np.array(kx_list), np.array(ky_list), np.array(val_list)
 
 files = [
-    ("thirdnn_momentum.txt", "3rd NN", 2),         # cột 2 là |p⁺| trong file này
-    ("nntb_momentum.txt", "nearest neighbor tbm", 2),  # cột 2 là |p⁺|
-    ("p_cv_map294.txt", "Mo with s,p,d", 4)             # cột 4 là |p⁺|
+    ("thirdnn_momentum.txt", "3rd NN", 2),         
+    ("nntb_momentum.txt", "nearest neighbor tbm", 2),  
+    ("p_cv_map294.txt", "Mo with s,p,d", 4)             
 ]
 
 fig, axes = plt.subplots(1, 3, figsize=(18, 5), constrained_layout=True)
