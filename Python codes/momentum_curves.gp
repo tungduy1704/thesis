@@ -15,8 +15,8 @@ plot \
     'thirdnn_momentum.txt'    using 1:7 with lines linestyle 4 title '3NN tight-binding', \
     #'p_cv_map.csv'            using 1:7 with lines linestyle 5 title 'DFT 144'
 
-set style line 1 lt 1 lc rgb '#1f77b4' lw 2  # xanh
-set style line 2 lt 1 lc rgb '#ff7f0e' lw 2  # cam
-set style line 3 lt 1 lc rgb '#2ca02c' lw 2  # xanh lá
-set style line 4 lt 2 lc rgb '#d62728' lw 2  # đỏ, đứt nét
-set style line 5 lt 2 lc rgb '#9467bd' lw 2  # tím, đứt nét
+set style line 1 lt 1 lc rgb '#1f77b4' lw 2  # blue
+set style line 2 lt 1 lc rgb '#ff7f0e' lw 2  # orange
+set style line 3 lt 1 lc rgb '#2ca02c' lw 2  # green
+set style line 4 lt 2 lc rgb '#d62728' lw 2  # red, dashline
+set style line 5 lt 2 lc rgb '#9467bd' lw 2  # purple, dashline
