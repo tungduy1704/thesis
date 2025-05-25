@@ -16,14 +16,14 @@ set arrow from 1, graph 0 to 1, graph 1 nohead lt 1 lw 2
 set datafile separator whitespace
 
 plot \
-  "bandstr1 cho kp.txt" using ($1 + 2.0/3):2 with lines lc rgb "red" title "k.p", \
-  "bandstr1 cho kp.txt" using ($1 + 2.0/3):3 with lines lc rgb "red" notitle, \
-  "bandstr1_tb_shifted.txt" using 1:2 with lines lc rgb "blue" title "NN-TB", \
-  "bandstr1_tb_shifted.txt" using 1:3 with lines lc rgb "blue" notitle, \
-  "bandstr1_tb_shifted.txt" using 1:4 with lines lc rgb "blue" notitle, \
-  "bandstr1_3nn_shifted.txt" using 1:2 with lines lc rgb "green" title "3rd NN", \
-  "bandstr1_3nn_shifted.txt" using 1:3 with lines lc rgb "green" notitle, \
-  "bandstr1_3nn_shifted.txt" using 1:4 with lines lc rgb "green" notitle, \
+  "kp_bandstr.txt" using ($1 + 2.0/3):2 with lines lc rgb "red" title "k.p", \
+  "kp_bandstr.txt" using ($1 + 2.0/3):3 with lines lc rgb "red" notitle, \
+  "nntb_bandstr_shifted.txt" using 1:2 with lines lc rgb "blue" title "NN-TB", \
+  "nntb_bandstr_shifted.txt" using 1:3 with lines lc rgb "blue" notitle, \
+  "nntb_bandstr_shifted.txt" using 1:4 with lines lc rgb "blue" notitle, \
+  "thirdnn_bandstr_shifted.txt" using 1:2 with lines lc rgb "green" title "3rd NN", \
+  "thirdnn_bandstr_shifted.txt" using 1:3 with lines lc rgb "green" notitle, \
+  "thirdnn_bandstr_shifted.txt" using 1:4 with lines lc rgb "green" notitle, \
   "eigenvalues_map294_shifted.txt" using 1:9 with lines lc rgb "black" title "DFT", \
   "eigenvalues_map294_shifted.txt" using 1:10 with lines lc rgb "black" notitle, \
   "eigenvalues_map294_shifted.txt" using 1:11 with lines lc rgb "black" notitle, \
