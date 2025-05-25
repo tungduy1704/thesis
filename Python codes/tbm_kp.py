@@ -103,7 +103,7 @@ def tb_kgrid(nk, G, a):
     for j in range(nk):
         for i in range(nk):
             akx[i, j] = - 2 * pi / a + i * dk
-            aky[i, j] = 0#- 2 * pi / a + j * dk
+            aky[i, j] = - 2 * pi / a + j * dk
 
     return akx, aky
 
@@ -115,7 +115,7 @@ def kp_kgrid(nk, G, a):
     for j in range(nk):
         for i in range(nk):
             akx[i, j] = -0.1 * 2 * pi / a + i * dk
-            aky[i, j] = 0#-0.1 * 2 * pi / a + j * dk
+            aky[i, j] = -0.1 * 2 * pi / a + j * dk
 
     return akx, aky
 
@@ -215,7 +215,8 @@ def thirdnn_tb_ham(kx, ky, params):
     V22 = (e2 + (3.0 * t11 + t22) * ca * cb
            + 2.0 * t22 * c2a + 2.0 * r11 * (2.0 * c3a * cb + c2b)
            + 2.0 * r12 * (4.0 * c3a * cb - c2b) / SR3
-           + (3.0 * u11 + u22) * c2a * c2b + 2.0 * u22 * c4a)    
+           + (3.0 * u11 + u22) * c2a * c2b + 2.0 * u22 * c4a)  
+      
     ham = np.array([[V0, V1, V2],
                     [np.conjugate(V1), V11, V12],
                     [np.conjugate(V2), np.conjugate(V12), V22]
@@ -296,7 +297,7 @@ def thirdnn_tb_ham(kx, ky, params):
            - SR3 * a * (3.0 * u11 + u22) * c2a * s2b
            + 2.0 * r11 * (-SR3 * a * c3a * sb - SR3 * a * s2b)
            + 1.1547 * r12 * (-2.0 * SR3 * a * c3a * sb + SR3 * a * s2b))
-    # Gọi đạo hàm tự động bằng autograd
+    
     dhkx = np.array([[dV0_kx, dV1_kx, dV2_kx],
                      [np.conjugate(dV1_kx), dV11_kx, dV12_kx],
                      [np.conjugate(dV2_kx), np.conjugate(dV12_kx), dV22_kx]])
@@ -488,23 +489,11 @@ def nntb_save_data(nk, G, akx, aky, bandu, bandd, band, pmx, pmy, a):
             kx = -np.sqrt(3) * G / 2 + (i) * np.sqrt(3) * G / (nk - 1)  # 
             f.write(f"{kx / (2 * np.pi / a)} {band[0, i, 0]} {band[1, i, 0]} {band[2, i, 0]}\n")
 
-    """with open("nntb_bandstr_u.txt", "w") as f:
-        for j in range(nk):
-            for i in range(nk):
-                f.write(f"{akx[i, j] / (2 * np.pi / a)} {aky[i, j] / (2 * np.pi / a)} "
-                        f"{bandu[0, i, j]} {bandu[1, i, j]} {bandu[2, i, j]}\n")"""
-
     with open("nntb_bandstr_up.txt", "w") as f:
         for i in range(nk):
                 f.write(f"{akx[i, 0] / (2 * np.pi / a)} "
                         f"{bandu[0, i, 0]} {bandu[1, i, 0]} {bandu[2, i, 0]}\n")
     
-    """with open("nntb_bandstr_d.txt", "w") as f:
-        for j in range(nk):
-            for i in range(nk):
-                f.write(f"{akx[i, j] / (2 * np.pi / a)} {aky[i, j] / (2 * np.pi / a)} "
-                        f"{bandd[0, i, j]} {bandd[1, i, j]} {bandd[2, i, j]}\n")"""
-   
     with open("nntb_bandstr_down.txt", "w") as f:
         for i in range(nk):
             f.write(f"{akx[i, 0] / (2 * np.pi / a)}  "
@@ -556,8 +545,7 @@ def thirdnn_save_data(nk, G, akx, aky, bandu, bandd, band, pmx, pmy, a):
 
                 f.write(f"{kx:.6e} {ky:.6e} {abs(pp):.6e} {abs(pm):.6e} "
                         f"({px.real:.6e},{px.imag:.6e}) ({py.real:.6e},{py.imag:.6e}) {p:.6e} \n")
-                """f.write(f"{kx:.6e} {ky:.6e} {abs(pp):.6e} {abs(pm):.6e} "
-                        f"{abs(px):.6e} {abs(py):.6e}  {p:.6e} \n")"""
+
             f.write("\n")  
 
 def kp_save_data(nk, G, akx, aky, band, pmx, pmy, a):
@@ -593,6 +581,7 @@ def kp_save_data(nk, G, akx, aky, band, pmx, pmy, a):
 
                 f.write(f"{kx:.6e} {ky:.6e} {abs(pp):.6e} {abs(pm):.6e} "
                         f"({px.real:.6e},{px.imag:.6e}) ({py.real:.6e},{py.imag:.6e}) {p:.6e} \n")
+                
             f.write("\n") 
 
 
@@ -615,5 +604,6 @@ def main():
     kp_save_data(nk, G, kp_akx, kp_aky, kp_band, kp_pmx, kp_pmy, a)
 
     print("SUCCESSFUL CALCULATION! LET'S PLOT THEM!")
+    
 if __name__ == "__main__":
     main()
