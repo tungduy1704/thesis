@@ -3,7 +3,7 @@
   etot_conv_thr =   3.0000000000d-05
   forc_conv_thr =   1.0000000000d-04
   outdir = './out/'
-  prefix = 'mos2soc'
+  prefix = 'mos2'
   pseudo_dir = './'
   tprnfor = .true.
   tstress = .true.
@@ -26,8 +26,8 @@
   mixing_beta =   4.0000000000d-01
 /
 ATOMIC_SPECIES
-Mo     95.95000  Mo.rel-pbesol-spn-rrkjus_psl.1.0.0.UPF
-S      32.07000  S.rel-pbesol-n-rrkjus_psl.1.0.0.UPF
+Mo  95.94   Mo.pbe-spn-rrkjus_psl.1.0.0.UPF
+S   32.065  S.pbe-nl-rrkjus_psl.1.0.0.UPF
 ATOMIC_POSITIONS crystal
 Mo           0.0000000000       0.0000000000       0.0000000000
 S            0.3333333300       0.6666666700       0.0897320000
