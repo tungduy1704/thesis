@@ -1,7 +1,7 @@
 num_bands         = 144           
 num_wann          = 9
-dis_froz_max      = 2.0
-dis_froz_min      = -3.0
+dis_froz_max      = 3.0
+dis_froz_min      = -5.0
 dis_num_iter      = 5000
 num_iter          = 0
 num_print_cycles  = 100
@@ -12,6 +12,10 @@ write_xyz        = .true.
 write_rmn        = .true.
 use_ws_distance  = .true.
 write_u_matrices = .true.
+
+# postw90
+dos = .true.
+dos_kmesh = 25
 
 begin unit_cell_cart
 Ang
